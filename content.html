@@ -1,0 +1,421 @@
+{
+    "project": {
+      "name": "Hasti Computers Pvt. Ltd. — Full Website",
+      "type": "multi-section animated marketing website",
+      "domain": "hasticomputers.com",
+      "stack": "HTML5 + CSS3 + Vanilla JS + GSAP 3.x ScrollTrigger",
+      "aesthetic": "dark premium, editorial, startup-grade",
+      "fonts": {
+        "heading": "Syne (Google Fonts) — weights 600, 700, 800",
+        "body": "DM Sans (Google Fonts) — weights 300, 400, 500",
+        "mono": "DM Mono (Google Fonts) — weight 400, 500"
+      }
+    },
+  
+    "design_system": {
+      "colors": {
+        "--bg": "#09090b",
+        "--bg2": "#111113",
+        "--bg3": "#18181b",
+        "--accent": "#b5f23d",
+        "--accent2": "#e2fb8f",
+        "--text": "#f4f4f5",
+        "--muted": "#71717a",
+        "--border": "#27272a",
+        "--card": "#141416"
+      },
+      "border_radius": {
+        "sm": "8px",
+        "md": "12px",
+        "lg": "1.25rem",
+        "xl": "1.5rem",
+        "pill": "2rem"
+      },
+      "animation_lib": "GSAP 3.12.5 + ScrollTrigger plugin",
+      "animation_cdn": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js",
+      "scrolltrigger_cdn": "https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"
+    },
+  
+    "global_components": {
+      "custom_cursor": {
+        "dot": "10px solid accent circle, mix-blend-mode: difference, follows mouse instantly",
+        "ring": "36px accent-border circle, lags behind with lerp (factor 0.12) for smooth trailing",
+        "hover_scale": "ring scales to 1.6x on interactive elements (a, button, cards)"
+      },
+      "scroll_progress_bar": {
+        "style": "2px accent-color bar fixed at top, scaleX(0→1) as page scrolls",
+        "z_index": 10000
+      },
+      "navbar": {
+        "position": "fixed top-0 full-width z-1000",
+        "bg": "rgba(9,9,11,0.8) with backdrop-filter blur(16px)",
+        "border_bottom": "1px solid rgba(255,255,255,0.04)",
+        "logo": "Hasti. — Syne 800, dot colored accent",
+        "links": ["About", "Solutions", "Clients", "FAQ", "Contact"],
+        "link_style": "DM Sans 0.85rem uppercase letter-spacing 0.04em color muted, hover text",
+        "cta_button": "accent bg, dark text, Syne 700 0.8rem, pill shape, 'Get in Touch ↗'",
+        "scroll_behavior": "bg darkens on scroll past 80px"
+      }
+    },
+  
+    "sections": [
+      {
+        "id": "hero",
+        "type": "full-viewport hero",
+        "layout": "2-column grid (1fr 1fr), vertically centered, padding-top 8rem",
+        "background": {
+          "base": "#09090b",
+          "grid_overlay": "CSS background-image grid lines rgba(255,255,255,0.03) 60px spacing, masked radially",
+          "glow": "radial-gradient accent 8% opacity at 30% top"
+        },
+        "left_column": {
+          "tag_pill": {
+            "text": "🛡 Indore's Most Trusted Security Partner",
+            "style": "accent bg 10% opacity, accent border 25%, DM Mono 0.72rem, pill, pulsing dot before"
+          },
+          "headline": {
+            "text": "Securing Smarter.\nPowering Greener.",
+            "style": "Syne 800, clamp(3rem, 5vw, 5.5rem), line-height 0.95, letter-spacing -0.04em",
+            "emphasis": "'Smarter.' and 'Greener.' colored accent"
+          },
+          "subheadline": {
+            "text": "Hasti Computers Pvt. Ltd. — India's benchmark in CCTV surveillance, solar energy, electronic security, and industrial automation since 2008.",
+            "style": "DM Sans 1.05rem, color muted, line-height 1.7, max-width 36ch"
+          },
+          "buttons": [
+            {"label": "Explore Solutions ↗", "style": "accent bg, dark text, pill, Syne 700, hover: accent2 + translateY(-2px)"},
+            {"label": "View Clients", "style": "outline border, pill, hover: accent border + accent text"}
+          ],
+          "stats_bar": {
+            "layout": "3-column grid with 1px bg-border gap dividers, border-radius 1rem, overflow hidden",
+            "items": [
+              {"value": "23+", "label": "States", "animated": true},
+              {"value": "620+", "label": "Cities", "animated": true},
+              {"value": "10K+", "label": "Customers", "animated": true}
+            ],
+            "animation": "GSAP counter from 0 to target on scroll enter, duration 2.2s power2.out"
+          }
+        },
+        "right_column": {
+          "type": "styled visual card",
+          "aspect_ratio": "4/3",
+          "inner_bg": "linear-gradient(135deg, #0d2005, #1a3a08, #0f1f04)",
+          "inner_grid": "radial-gradient accent 12% on 32px grid",
+          "center_content": "large emoji + Syne title + DM Sans subtitle",
+          "bottom_pills": ["CCTV ✓", "Solar ✓", "Automation ✓"],
+          "overlay": "linear-gradient accent 15% opacity top-left to transparent"
+        },
+        "animation": {
+          "all_children": "GSAP reveal — opacity 0 → 1, y 40 → 0, duration 0.9, power3.out, stagger 0.15",
+          "right_col": "x 50 → 0 slide from right"
+        }
+      },
+  
+      {
+        "id": "ticker_marquee",
+        "type": "horizontal auto-scrolling marquee",
+        "bg": "#111113",
+        "border": "top and bottom 1px solid var(--border)",
+        "items": ["CCTV Surveillance", "Solar Energy", "Access Control", "Industrial Automation", "Biometric Systems", "Fire Alarm", "Smart Automation", "Electronic Security", "Solar Plant Install", "IP Cameras", "DVR / NVR Systems", "Nextview IoT"],
+        "item_style": "Syne 700 0.82rem uppercase letter-spacing 0.08em color muted, with 5px accent dot prefix",
+        "animation": "CSS keyframe marquee, 28s linear infinite, pauses on hover",
+        "duplication": "double items array to create seamless infinite loop"
+      },
+  
+      {
+        "id": "solutions",
+        "type": "solutions grid section",
+        "padding": "6rem 3rem",
+        "header": {
+          "label": "DM Mono 0.72rem accent uppercase — 'Our Solutions'",
+          "title": "Technology That Protects & Powers Your World",
+          "title_emphasis": "'Protects' and 'Powers' in accent color",
+          "subtitle": "color muted, max-width 50ch",
+          "see_all_link": "accent text, pill outline border, floats right"
+        },
+        "grid": {
+          "layout": "4-column, 1px gap on bg-border, border + border-radius 1.5rem, overflow hidden",
+          "cards": [
+            {
+              "icon": "📷",
+              "title": "Surveillance System",
+              "description": "HD CCTV cameras, DVR/NVR systems, IP cameras, and remote monitoring solutions for homes, offices, and industries.",
+              "tags": ["CCTV", "IP Camera", "DVR/NVR"]
+            },
+            {
+              "icon": "☀️",
+              "title": "Solar Energy",
+              "description": "End-to-end solar plant installation, grid-tied systems, rooftop solutions, and renewable energy consulting.",
+              "tags": ["Solar Plant", "Grid-Tied", "Rooftop"]
+            },
+            {
+              "icon": "🔐",
+              "title": "Electronic Security",
+              "description": "Access control, biometric systems, fire alarms, intrusion detection, and smart HD TVs for enterprise security.",
+              "tags": ["Access Control", "Biometric", "Fire Alarm"]
+            },
+            {
+              "icon": "⚡",
+              "title": "Nextview",
+              "description": "Smart automation and IoT-enabled technology solutions for modern businesses, campuses, and smart homes.",
+              "tags": ["IoT", "Automation", "Smart Home"]
+            }
+          ],
+          "card_style": "bg card, hover bg3, pseudo ::before bottom 2px accent scaleX(0→1) on hover",
+          "icon_bg": "accent 10% opacity, border-radius 0.75rem, 48x48px",
+          "tag_style": "DM Mono 0.65rem accent, accent border 25%, border-radius 0.4rem"
+        },
+        "value_section": {
+          "title": "Built on Trust, Driven by Values",
+          "grid": "3-column, 1rem gap",
+          "cards": [
+            {"icon": "🌱", "title": "Environment Friendly", "desc": "Promoting renewable energy adoption through solar and sustainable technology solutions."},
+            {"icon": "🛡", "title": "Safety First", "desc": "Ensuring customer safety with advanced CCTV, scanning, and detection systems."},
+            {"icon": "🤝", "title": "Client Satisfaction", "desc": "Continuous feedback integration for maximum satisfaction and long-term partnerships."},
+            {"icon": "🔭", "title": "Transparency", "desc": "Ethical practices and clear communication through every stage of engagement."},
+            {"icon": "👥", "title": "Qualified Team", "desc": "200+ trained, passionate, and customer-focused professionals across India."},
+            {"icon": "⭐", "title": "Quality Services", "desc": "Trusted Solar Power Panel and Security System Dealers in Indore since 2008."}
+          ],
+          "card_hover": "border-color accent 30%, translateY(-4px), transition 0.3s"
+        },
+        "animation": {
+          "sol_cards": "GSAP stagger: opacity 0→1, y 25→0, stagger 0.1, duration 0.7, scrollTrigger top 82%",
+          "val_cards": "GSAP stagger: opacity 0→1, y 20→0, stagger 0.08, duration 0.6"
+        }
+      },
+  
+      {
+        "id": "about",
+        "type": "bento grid section",
+        "bg": "#111113",
+        "border": "top and bottom 1px solid var(--border)",
+        "padding": "6rem 3rem",
+        "bento_layout": "12-column CSS grid with named spans",
+        "cells": [
+          {"span": "col-span-7 row-span-2", "content": "headline + body paragraphs + CTA button", "headline_emphasis": "accent on '23 States'"},
+          {"span": "col-span-5", "content": "big number 15+, label 'Years of Experience', subtext 'Founded 2008 · Incorporated 2019'"},
+          {"span": "col-span-5", "content": "big number 200+, label 'Trained Staff'"},
+          {"span": "col-span-4", "content": "emoji 🎯 + mission quote in Syne 1.1rem"},
+          {"span": "col-span-4", "content": "Location info — 'Indore' in accent, address below"},
+          {"span": "col-span-4", "content": "Reach info — '620+' in accent, 'Cities Covered'"}
+        ],
+        "card_style": "bg card, border var(--border), border-radius 1.25rem, hover border accent 30%",
+        "big_number_style": "Syne 800 4.5rem accent line-height 1 letter-spacing -0.04em",
+        "animation": "GSAP stagger all bento-card: opacity 0→1, y 30→0, stagger 0.1, duration 0.8"
+      },
+  
+      {
+        "id": "parallax_banner",
+        "type": "parallax quote banner",
+        "height": "50vh",
+        "overflow": "hidden",
+        "bg": {
+          "base": "linear-gradient(135deg, #0d1a05, #09090b, #0a1505)",
+          "dot_grid": "radial-gradient accent 15% on 48px grid"
+        },
+        "content": {
+          "quote": "\"Have you ever seen your security bill go down while your protection goes up?\"",
+          "emphasis": "'security bill go down' in accent with underline accent 40% opacity offset 4px",
+          "attribution": "— Hasti Computers Pvt. Ltd. in DM Mono 0.78rem muted"
+        },
+        "parallax": "GSAP ScrollTrigger scrub: bg element yPercent -20 from top-bottom to bottom-top",
+        "font": "Syne 800 clamp(1.5rem, 3.5vw, 3.2rem) letter-spacing -0.03em"
+      },
+  
+      {
+        "id": "clients",
+        "type": "clients grid + stats + map",
+        "bg": "#111113",
+        "border": "top and bottom",
+        "clients_grid": {
+          "layout": "5-column, 1px gap bg-border, border + border-radius 1.25rem, overflow hidden",
+          "items": ["Army War College Mhow", "AIIMS Bhopal", "Delhi Public School", "Choithram Hospital", "Trident Group", "Shakti Pumps", "Ruchi Soya", "Tornado Water Park", "Prestige Institute", "Punjab Sindh Bank", "Force Motors", "Brilliant Conventional", "Cyber Infrastructure", "CDN Software", "Walkover", "Apple Flexipack", "Apex Structure", "GRT Hotels", "IPCE Pvt. Ltd.", "Indore Industries"],
+          "pill_style": "bg card, padding 1.25rem, text-align center, DM Sans 0.8rem 500 muted, hover: bg3 + text"
+        },
+        "stats_bar": {
+          "layout": "5-column grid, 1px dividers, border + border-radius 1.5rem",
+          "items": [
+            {"value": 23, "suffix": "+", "label": "States"},
+            {"value": 620, "suffix": "+", "label": "Cities"},
+            {"value": 15, "suffix": "", "label": "Years Active"},
+            {"value": 200, "suffix": "+", "label": "Staff Trained"},
+            {"value": 10000, "suffix": "", "label": "Customers", "format": "10K+"}
+          ],
+          "animation": "GSAP counter, scrollTrigger once, duration 2.2s"
+        },
+        "world_map": {
+          "style": "bg3, border, border-radius 1rem, height 240px, centered label",
+          "dots": "9 accent circles at hardcoded % positions representing India coverage",
+          "pulse_rings": "CSS @keyframes ripple animation on each dot with staggered animation-delay",
+          "label": "DM Mono 0.7rem muted — 'Pan-India Coverage · 23 States · 620+ Cities'"
+        }
+      },
+  
+      {
+        "id": "services_accordion",
+        "type": "2-column: info + accordion",
+        "left": {
+          "content": "label + title + subtitle + contact info card",
+          "contact_card": "DM Mono label 'HEAD OFFICE', address, phone, email, hours in card bg border-radius 1.25rem"
+        },
+        "accordion": {
+          "wrapper_style": "border var(--border), border-radius 1.25rem, overflow hidden",
+          "items": [
+            {"num": "01", "title": "CCTV & Surveillance Systems", "body": "Complete CCTV solutions including HD analog, IP, PTZ, and thermal cameras..."},
+            {"num": "02", "title": "Solar Plant Installation", "body": "End-to-end solar energy solutions — site survey, system design, grid-tied & off-grid installation..."},
+            {"num": "03", "title": "Access Control & Biometric", "body": "Advanced access control with biometric fingerprint, face recognition, RFID card..."},
+            {"num": "04", "title": "Fire Alarm & Safety Systems", "body": "Addressable and conventional fire alarm systems, smoke & heat detectors..."},
+            {"num": "05", "title": "Industrial Automation", "body": "PLC/SCADA-based process automation, conveyor control, energy management..."},
+            {"num": "06", "title": "Nextview Smart Solutions", "body": "IoT-enabled smart home and building automation — smart lighting, HVAC control..."}
+          ],
+          "header_style": "flex space-between, hover bg3, DM Mono num accent, Syne h3 title",
+          "icon": "28px circle border, + inside, open state: accent bg + rotate 45deg + accent border",
+          "body_animation": "CSS max-height 0 → scrollHeight px, cubic-bezier(.77,0,.18,1) 0.45s",
+          "behavior": "close all siblings on open (single open at a time)"
+        }
+      },
+  
+      {
+        "id": "partners_marquee",
+        "type": "reverse-direction logo marquee",
+        "direction": "right-to-left (reverse: animation plays in reverse)",
+        "speed": "22s linear infinite",
+        "items": ["Hikvision", "Dahua", "CP Plus", "Havells Solar", "Waaree", "Honeywell", "Bosch Security", "Axis Cameras", "ZKTeco", "Godrej Security", "Delta Solar", "ABB Solar"],
+        "item_style": "bg card, border, border-radius 0.75rem, Syne 700 0.78rem muted, padding 0.5rem 1.5rem"
+      },
+  
+      {
+        "id": "testimonials",
+        "type": "3-column testimonial cards",
+        "cards": [
+          {"org": "Delhi Public School", "initials": "DPS", "category": "Educational Institution", "text": "HCPL provided us with a reliable CCTV surveillance system that dramatically improved our security standards across multiple campuses.", "stars": 5},
+          {"org": "Shakti Pumps", "initials": "SP", "category": "Manufacturing Sector", "text": "Their solar energy solutions helped us significantly reduce operational costs and move towards a sustainable, green future.", "stars": 5},
+          {"org": "Choithram Hospital", "initials": "CH", "category": "Healthcare Sector", "text": "Professional, timely, and excellent after-sales support. The access control system they installed is flawless and very reliable.", "stars": 5}
+        ],
+        "card_style": "bg card, border, border-radius 1.25rem, padding 2rem",
+        "avatar_style": "38px circle, accent 15% bg, Syne 0.8rem 700 accent text",
+        "stars": "accent color ★★★★★ 0.8rem letter-spacing 0.1em",
+        "animation": "GSAP stagger opacity+y on scrollTrigger"
+      },
+  
+      {
+        "id": "faq",
+        "type": "2-column accordion FAQ",
+        "bg": "#111113",
+        "questions": [
+          {"q": "Do you offer after-sales support?", "a": "Yes, we provide comprehensive AMC and 24/7 support for all installed systems."},
+          {"q": "Which cities do you serve?", "a": "620+ cities across 23 states. Primary base is Indore, MP."},
+          {"q": "Can you install solar for homes?", "a": "Absolutely. We handle residential rooftop solar with subsidy paperwork and net metering."},
+          {"q": "What CCTV brands do you offer?", "a": "Hikvision, Dahua, CP Plus and others. We recommend based on your budget."},
+          {"q": "How long does solar installation take?", "a": "3–7 working days for residential. Commercial varies by scale."},
+          {"q": "Do you provide training after installation?", "a": "Yes, we train your team on system operation and basic troubleshooting."}
+        ],
+        "layout": "split first 3 into left accordion, last 3 into right accordion",
+        "accordion_style": "same as services accordion"
+      },
+  
+      {
+        "id": "cta",
+        "type": "full-width CTA section",
+        "layout": "2-column grid, accent bg #b5f23d, border-radius 2rem, margin 0 2rem 4rem",
+        "padding": "5rem 4rem",
+        "left": {
+          "headline": "Ready to Secure\nYour Future?",
+          "headline_style": "Syne 800 clamp(2rem,3.5vw,3.2rem) dark text letter-spacing -0.04em",
+          "subtext": "color dark 65% opacity",
+          "email_form": {
+            "input": "accent 12% bg, dark border 20%, pill, dark text, placeholder dark 45%",
+            "button": "dark bg, accent text, Syne 700, pill, 'Get Free Quote ↗'"
+          },
+          "phone_label": "DM Sans 0.75rem dark 45% opacity"
+        },
+        "right": {
+          "type": "4 badge cards",
+          "badges": [
+            {"icon": "📷", "title": "CCTV & Surveillance", "desc": "HD cameras, DVR/NVR, IP systems"},
+            {"icon": "☀️", "title": "Solar Energy", "desc": "Installation, grid-tied & rooftop solar"},
+            {"icon": "🔐", "title": "Access Control", "desc": "Biometric, RFID, fire alarm systems"},
+            {"icon": "⚡", "title": "Nextview Automation", "desc": "Smart IoT & industrial automation"}
+          ],
+          "badge_style": "dark 10% bg, dark border 15%, border-radius 1rem, icon in dark square 0.6rem border-radius"
+        },
+        "animation": "GSAP: section opacity+y+scale(0.97) on scroll, badges stagger x 30→0"
+      },
+  
+      {
+        "id": "footer",
+        "type": "4-column footer",
+        "border_top": "1px solid var(--border)",
+        "padding": "4rem 3rem 2rem",
+        "columns": [
+          {
+            "type": "brand",
+            "logo": "Hasti. Computers — Syne 800, dot accent",
+            "desc": "max-width 28ch, DM Sans 0.85rem muted",
+            "contact_links": ["📞 0731-4280580", "📧 info@hasticomputers.com", "📍 Silver Mall, 8-A R.N.T. Marg, Indore-452001"]
+          },
+          {"title": "Company", "links": ["About Us", "Solutions", "Clients", "Career", "Blog"]},
+          {"title": "Solutions", "links": ["Surveillance Systems", "Solar Energy", "Electronic Security", "Nextview", "Industrial Automation"]},
+          {"title": "Contact", "links": ["0731-4280580", "0731-4280581", "9589481800", "info@hasticomputers.com", "hasticomputers.com"]}
+        ],
+        "bottom_bar": {
+          "layout": "space-between flex",
+          "left": "copyright text DM Sans 0.78rem muted",
+          "right": "Privacy Policy | Terms | Sitemap — muted links hover accent",
+          "separator": "1px border-top var(--border)"
+        }
+      }
+    ],
+  
+    "global_animations": {
+      "scroll_reveal": {
+        "class_reveal": "opacity 0 y+40 → opacity 1 y 0, duration 0.9, power3.out, start 'top 88%'",
+        "class_reveal_left": "opacity 0 x-50 → opacity 1 x 0, duration 1, power3.out, start 'top 85%'",
+        "class_reveal_right": "opacity 0 x+50 → opacity 1 x 0, duration 1, power3.out, start 'top 85%'",
+        "class_reveal_scale": "opacity 0 scale(0.92) → opacity 1 scale(1), duration 0.9, power3.out"
+      },
+      "counters": {
+        "trigger": "scrollTrigger once on each .counter-val element",
+        "animation": "GSAP fromTo {val:0} to {val:target}, onUpdate: update textContent, duration 2.2s, power2.out",
+        "format": "values ≥1000 display as 'XK+', others as 'X+'"
+      },
+      "parallax": {
+        "target": "#parallaxBg",
+        "property": "yPercent -20",
+        "scrub": true,
+        "trigger_start": "top bottom",
+        "trigger_end": "bottom top"
+      }
+    },
+  
+    "company_data": {
+      "name": "Hasti Computers Pvt. Ltd.",
+      "founded": 2008,
+      "incorporated": 2019,
+      "phone_primary": "0731-4280580",
+      "phone_secondary": ["0731-4280581", "0731-4280582"],
+      "mobile": ["9589481800", "9993579876"],
+      "email": "info@hasticomputers.com",
+      "address": "101, Block-C, Silver Mall, 8-A, R.N.T. Marg, Indore-452001 (MP)",
+      "hours": "Mon–Fri 10:30 AM – 8:00 PM",
+      "stats": {
+        "states": 23,
+        "cities": 620,
+        "years": 15,
+        "staff": 200,
+        "customers": 10000
+      }
+    },
+  
+    "technical_notes": {
+      "font_loading": "Load Google Fonts in <head> before any CSS to prevent FOUT",
+      "gsap_init": "Register ScrollTrigger plugin: gsap.registerPlugin(ScrollTrigger)",
+      "accordion_js": "Toggle max-height based on scrollHeight, close siblings on open",
+      "marquee_loop": "Duplicate items array to create seamless CSS infinite scroll",
+      "counter_format": "values >= 1000 → divide by 1000, append 'K+'; others append '+'",
+      "cursor_lerp": "requestAnimationFrame loop: rx += (mx - rx) * 0.12, ry += (my - ry) * 0.12",
+      "scroll_progress": "window.scrollY / (document.body.scrollHeight - window.innerHeight) → scaleX",
+      "map_dots": "position:absolute % positions inside relative container, accent color + ripple pseudo-animation",
+      "mobile_responsive": "At 768px: single column layouts, hide custom cursor, reduce font sizes, nav hamburger"
+    }
+  }
