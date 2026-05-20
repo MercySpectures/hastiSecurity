@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ArrowUpRight, Target } from "lucide-react";
 import { company } from "../../data/siteContent";
 import { MotionItem, MotionStagger } from "../ui/MotionSection";
@@ -6,7 +7,7 @@ export function AboutSection() {
   return (
     <section
       id="about"
-      className="scroll-mt-24 border-y border-border bg-bg2 px-4 py-20 sm:px-6 lg:px-8"
+      className="scroll-mt-nav border-y border-border bg-bg2 px-4 py-20 sm:px-6 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <MotionStagger className="grid gap-4 lg:grid-cols-12 lg:auto-rows-[minmax(140px,auto)]">
@@ -27,13 +28,13 @@ export function AboutSection() {
                 training, process, and after-sales so systems stay reliable long
                 after commissioning.
               </p>
-              <a
-                href="#contact"
+              <Link
+                to="/contact"
                 className="inline-flex items-center gap-2 rounded-pill bg-accent px-5 py-2.5 font-display text-sm font-bold text-cta-text transition hover:bg-accent2"
               >
                 Talk to our team
                 <ArrowUpRight className="h-4 w-4" />
-              </a>
+              </Link>
             </div>
           </MotionItem>
 

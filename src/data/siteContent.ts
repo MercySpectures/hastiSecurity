@@ -1,5 +1,5 @@
 export const company = {
-  name: "Hasti Computers Pvt. Ltd.",
+  name: "Hasti Security Solutions",
   shortName: "Hasti.",
   domain: "hasticomputers.com",
   founded: 2008,

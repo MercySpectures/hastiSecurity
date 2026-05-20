@@ -1,28 +1,31 @@
-import { company, navLinks } from "../../data/siteContent";
+import { Link } from "react-router-dom";
+import { company } from "../../data/siteContent";
+import { solutionCategories, solutionPath } from "../../data/navigation";
 
 const footerCols = [
   {
     title: "Company",
-    links: ["About Us", "Solutions", "Clients", "Career", "Blog"],
+    links: [
+      { label: "About Us", to: "/about" },
+      { label: "Our Solutions", to: solutionPath(solutionCategories[0].slug) },
+      { label: "Clients", to: "/clients" },
+      { label: "Contact", to: "/contact" },
+    ],
   },
   {
     title: "Solutions",
-    links: [
-      "Surveillance Systems",
-      "Solar Energy",
-      "Electronic Security",
-      "Nextview",
-      "Industrial Automation",
-    ],
+    links: solutionCategories.map((c) => ({
+      label: c.title,
+      to: solutionPath(c.slug),
+    })),
   },
   {
     title: "Contact",
     links: [
-      company.phonePrimary,
-      company.phoneSecondary[0],
-      company.mobile[0],
-      company.email,
-      company.domain,
+      { label: company.phonePrimary, to: `tel:${company.phonePrimary.replace(/-/g, "")}` as const, external: true },
+      { label: company.mobile[0], to: `tel:${company.mobile[0]}` as const, external: true },
+      { label: company.email, to: `mailto:${company.email}` as const, external: true },
+      { label: company.domain, to: `https://${company.domain}`, external: true },
     ],
   },
 ] as const;
@@ -33,13 +36,25 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
           <div className="max-w-sm space-y-4">
-            <div className="font-display text-2xl font-extrabold tracking-tight">
-              {company.shortName}
-              <span className="text-accent">.</span>{" "}
-              <span className="text-base font-semibold text-muted">
-                Computers
-              </span>
-            </div>
+            <Link
+              to="/"
+              className="inline-block"
+            >
+              <div className="flex items-center gap-2">
+                <img 
+                  src="/hastiIconLogo.png" 
+                  alt="Hasti Security Solutions Logo" 
+                  className="h-10 w-auto"
+                />
+                <div>
+                  <div className="font-display text-xl font-extrabold tracking-tight">
+                    {company.shortName}
+                    <span className="text-accent">.</span>
+                  </div>
+                  <div className="text-sm font-semibold text-muted">Security Solutions</div>
+                </div>
+              </div>
+            </Link>
             <p className="text-sm leading-relaxed text-muted">
               India&apos;s benchmark in CCTV surveillance, solar energy,
               electronic security, and industrial automation since{" "}
@@ -73,24 +88,22 @@ export function Footer() {
               </div>
               <ul className="space-y-2.5 text-sm text-muted">
                 {col.links.map((link) => (
-                  <li key={link}>
-                    <a
-                      href={
-                        link.includes("@")
-                          ? `mailto:${link}`
-                          : link.startsWith("073") || link.startsWith("958")
-                            ? `tel:${link.replace(/-/g, "")}`
-                            : link === company.domain
-                              ? `https://${link}`
-                              : "#top"
-                      }
-                      className="transition hover:text-accent"
-                      {...(link === company.domain
-                        ? { rel: "noreferrer", target: "_blank" }
-                        : {})}
-                    >
-                      {link}
-                    </a>
+                  <li key={link.label}>
+                    {"external" in link && link.external ? (
+                      <a
+                        href={link.to}
+                        className="transition hover:text-accent"
+                        {...(link.to.startsWith("http")
+                          ? { rel: "noreferrer", target: "_blank" }
+                          : {})}
+                      >
+                        {link.label}
+                      </a>
+                    ) : (
+                      <Link to={link.to} className="transition hover:text-accent">
+                        {link.label}
+                      </Link>
+                    )}
                   </li>
                 ))}
               </ul>
@@ -103,23 +116,27 @@ export function Footer() {
             © {new Date().getFullYear()} {company.name}. All rights reserved.
           </p>
           <div className="flex flex-wrap gap-x-4 gap-y-2">
-            {navLinks.slice(0, 3).map((l) => (
-              <a key={l.href} href={l.href} className="hover:text-accent">
-                {l.label}
-              </a>
-            ))}
+            <Link to="/about" className="hover:text-accent">
+              About
+            </Link>
+            <Link to="/clients" className="hover:text-accent">
+              Clients
+            </Link>
+            <Link to="/contact" className="hover:text-accent">
+              Contact
+            </Link>
             <span className="hidden sm:inline" aria-hidden>
               |
             </span>
-            <a href="#top" className="hover:text-accent">
+            <Link to="/" className="hover:text-accent">
               Privacy Policy
-            </a>
-            <a href="#top" className="hover:text-accent">
+            </Link>
+            <Link to="/" className="hover:text-accent">
               Terms
-            </a>
-            <a href="#top" className="hover:text-accent">
+            </Link>
+            <Link to="/" className="hover:text-accent">
               Sitemap
-            </a>
+            </Link>
           </div>
         </div>
       </div>

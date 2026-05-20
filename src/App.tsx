@@ -1,38 +1,41 @@
-import { CursorFollower } from "./components/ui/CursorFollower";
-import { ScrollProgress } from "./components/layout/ScrollProgress";
-import { NavBar } from "./components/layout/NavBar";
-import { Footer } from "./components/layout/Footer";
-import { HeroSection } from "./components/sections/HeroSection";
-import { MarqueeSection } from "./components/sections/MarqueeSection";
-import { SolutionsSection } from "./components/sections/SolutionsSection";
-import { AboutSection } from "./components/sections/AboutSection";
-import { ParallaxQuote } from "./components/sections/ParallaxQuote";
-import { ClientsSection } from "./components/sections/ClientsSection";
-import { ServicesSection } from "./components/sections/ServicesSection";
-import { TestimonialsSection } from "./components/sections/TestimonialsSection";
-import { FaqSection } from "./components/sections/FaqSection";
-import { CtaSection } from "./components/sections/CtaSection";
+import { Suspense, lazy } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AppLayout } from "./components/layout/AppLayout";
+
+const HomePage = lazy(() =>
+  import("./pages/HomePage").then((m) => ({ default: m.HomePage })),
+);
+const AboutPage = lazy(() =>
+  import("./pages/AboutPage").then((m) => ({ default: m.AboutPage })),
+);
+const SolutionsCategoryPage = lazy(() =>
+  import("./pages/SolutionsCategoryPage").then((m) => ({
+    default: m.SolutionsCategoryPage,
+  })),
+);
+const ClientsPage = lazy(() =>
+  import("./pages/ClientsPage").then((m) => ({ default: m.ClientsPage })),
+);
+const ContactPage = lazy(() =>
+  import("./pages/ContactPage").then((m) => ({ default: m.ContactPage })),
+);
+const NotFoundPage = lazy(() =>
+  import("./pages/NotFoundPage").then((m) => ({ default: m.NotFoundPage })),
+);
 
 export default function App() {
   return (
-    <div className="min-h-dvh bg-bg">
-      <CursorFollower />
-      <ScrollProgress />
-      <NavBar />
-      <main>
-        <HeroSection />
-        <MarqueeSection />
-        <SolutionsSection />
-        <AboutSection />
-        <ParallaxQuote />
-        <ClientsSection />
-        <MarqueeSection reverse />
-        <ServicesSection />
-        <TestimonialsSection />
-        <FaqSection />
-        <CtaSection />
-      </main>
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/solutions/:slug" element={<SolutionsCategoryPage />} />
+          <Route path="/clients" element={<ClientsPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }

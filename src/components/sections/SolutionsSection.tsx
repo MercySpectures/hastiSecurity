@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import {
   Award,
   Camera,
@@ -18,7 +19,7 @@ const valueIcons = [Leaf, Shield, HeartHandshake, Eye, Users, Award] as const;
 
 export function SolutionsSection() {
   return (
-    <section id="solutions" className="scroll-mt-24 px-4 py-20 sm:px-6 lg:px-8">
+    <section id="solutions" className="scroll-mt-nav px-4 py-20 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
           <div className="max-w-3xl space-y-4">
@@ -35,12 +36,12 @@ export function SolutionsSection() {
               automation, we engineer systems that stay dependable at scale.
             </p>
           </div>
-          <a
-            href="#contact"
+          <Link
+            to="/contact"
             className="inline-flex shrink-0 items-center justify-center self-start rounded-pill border border-accent/40 px-5 py-2.5 font-display text-sm font-bold text-accent transition hover:bg-accent/10"
           >
             Request consultation
-          </a>
+          </Link>
         </div>
 
         <MotionStagger className="mb-16 grid gap-px overflow-hidden rounded-3xl border border-border bg-border sm:grid-cols-2 lg:grid-cols-4">

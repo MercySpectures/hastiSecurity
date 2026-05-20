@@ -18,7 +18,7 @@ export function FaqSection() {
   return (
     <section
       id="faq"
-      className="scroll-mt-24 border-y border-border bg-bg2 px-4 py-20 sm:px-6 lg:px-8"
+      className="scroll-mt-nav border-y border-border bg-bg2 px-4 py-20 sm:px-6 lg:px-8"
     >
       <div className="mx-auto max-w-7xl">
         <MotionSection className="mb-12 max-w-2xl space-y-3">

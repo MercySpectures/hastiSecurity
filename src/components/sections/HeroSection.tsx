@@ -6,6 +6,7 @@ import {
   Shield,
   SunMedium,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 import { motion, useReducedMotion } from "framer-motion";
 import { company } from "../../data/siteContent";
 import { AnimatedCounter } from "../ui/AnimatedCounter";
@@ -23,10 +24,10 @@ export function HeroSection() {
   return (
     <section
       id="top"
-      className="relative min-h-[92vh] overflow-hidden pt-28 pb-20 sm:pt-32 sm:pb-24 lg:pt-36"
+      className="relative min-h-[min(88vh,820px)] overflow-hidden pb-16 sm:pb-20"
     >
       <div
-        className="pointer-events-none absolute -left-32 top-20 h-72 w-72 rounded-full bg-accent/20 blur-[100px]"
+        className="pointer-events-none absolute -left-32 top-16 h-72 w-72 rounded-full bg-accent/20 blur-[100px]"
         aria-hidden
       />
       <div
@@ -44,9 +45,7 @@ export function HeroSection() {
         aria-hidden
       />
 
-      <motion.div
-        className="relative mx-auto grid max-w-7xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8"
-      >
+      <div className="relative mx-auto grid max-w-7xl items-center gap-12 px-4 py-8 sm:px-6 sm:py-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-16 lg:px-8 lg:py-12">
         <div className="space-y-8">
           <motion.div
             initial={reduce ? false : { opacity: 0, y: 28 }}
@@ -95,21 +94,21 @@ export function HeroSection() {
             transition={{ duration: 0.75, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
             className="flex flex-wrap gap-3"
           >
-            <a
-              href="#solutions"
+            <Link
+              to="/#solutions"
               data-cursor="hover"
               className="group inline-flex items-center gap-2 rounded-pill bg-accent px-6 py-3.5 font-display text-sm font-bold text-cta-text shadow-lg shadow-accent/25 transition hover:-translate-y-0.5 hover:bg-accent2 hover:shadow-accent/35"
             >
               Explore Solutions
               <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </a>
-            <a
-              href="#contact"
+            </Link>
+            <Link
+              to="/contact"
               data-cursor="hover"
               className="inline-flex items-center gap-2 rounded-pill border border-border bg-card/80 px-6 py-3.5 font-display text-sm font-bold text-foreground backdrop-blur-sm transition hover:border-accent/50 hover:text-accent"
             >
               Get Free Quote
-            </a>
+            </Link>
           </motion.div>
 
           <motion.div
@@ -178,12 +177,6 @@ export function HeroSection() {
               }}
               aria-hidden
             />
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-tr from-accent/20 via-transparent to-transparent"
-              animate={reduce ? undefined : { opacity: [0.15, 0.28, 0.15] }}
-              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              aria-hidden
-            />
 
             <div className="relative flex h-full flex-col justify-between p-6 sm:p-8">
               <motion.div
@@ -194,11 +187,7 @@ export function HeroSection() {
                 <Shield className="h-8 w-8" strokeWidth={1.25} />
               </motion.div>
 
-              <motion.div
-                initial={reduce ? false : { opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.6 }}
-              >
+              <div>
                 <p className="font-display text-2xl font-bold text-white sm:text-3xl">
                   Integrated protection
                 </p>
@@ -206,7 +195,7 @@ export function HeroSection() {
                   Surveillance, access, energy, and automation under one
                   disciplined delivery model.
                 </p>
-              </motion.div>
+              </div>
 
               <div className="grid grid-cols-2 gap-2 sm:gap-3">
                 {services.map(({ icon: Icon, label }, i) => (
@@ -244,20 +233,8 @@ export function HeroSection() {
               </div>
             </div>
           </motion.div>
-
-          <motion.div
-            className="absolute -right-3 top-8 hidden rounded-xl border border-accent/30 bg-accent/90 px-4 py-2.5 shadow-lg lg:block"
-            initial={reduce ? false : { opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.55, duration: 0.5 }}
-          >
-            <div className="font-display text-lg font-extrabold text-cta-text">15+</div>
-            <div className="text-[0.65rem] font-semibold uppercase tracking-wider text-cta-text/80">
-              Years active
-            </div>
-          </motion.div>
         </motion.div>
-      </motion.div>
+      </div>
     </section>
   );
 }

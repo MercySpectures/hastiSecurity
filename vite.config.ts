@@ -11,6 +11,7 @@ export default defineConfig({
         manualChunks: {
           motion: ["framer-motion"],
           icons: ["lucide-react"],
+          leaflet: ["leaflet", "react-leaflet"],
         },
       },
     },
